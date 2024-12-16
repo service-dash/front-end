@@ -2,7 +2,6 @@
 
 import { fonts } from './fonts'
 import './globals.css'
-import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider } from '@chakra-ui/react'
 import NextTopLoader from 'nextjs-toploader'
 
@@ -36,20 +35,18 @@ export default function RootLayout ({
     <html className={fonts.rubik.className} lang="en">
       <head>
         <link rel="shortcut icon" href="/app-icon.png" />
-        <title>Dataforge - Database schema visualization and collaboration tool</title>
+        <title>Stix OS - Database schema visualization and collaboration tool</title>
       </head>
       <body className={`${fonts.inter.className} bg-background-primary text-text-primary text-sm`} suppressHydrationWarning>
         <NextTopLoader color='#fff' />
         <ChakraProvider theme={theme}>
-          <CacheProvider>
-            <QueryClientProvider client={queryClient}>
-              <AnimatePresence mode="wait" initial={false}>
-                <Suspense>
-                  {renderChildren()}
-                </Suspense>
-              </AnimatePresence>
-            </QueryClientProvider>
-          </CacheProvider>
+          <QueryClientProvider client={queryClient}>
+            <AnimatePresence mode="wait" initial={false}>
+              <Suspense>
+                {renderChildren()}
+              </Suspense>
+            </AnimatePresence>
+          </QueryClientProvider>
         </ChakraProvider>
       </body>
     </html>
